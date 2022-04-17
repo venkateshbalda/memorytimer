@@ -1,0 +1,160 @@
+<html>
+     <head>
+          <title>just a huge timer</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <script src="https://cdn.jsdelivr.net/npm/fireworks-js@latest/dist/fireworks.js"></script>
+          <script src="/fireworks.js"></script>
+
+         <style>p{text-align:center;font-size:40px;margin-top:0px;color:white;}
+            h4{text-align:center;font-size:60px;margin-top:0px;color:white;}
+        </style>
+          
+          <p>Time Since</p>
+          <h4>A moment in life</h4>
+     </head>
+     <body id="root" style="background: #000;">
+          <h4 id="demo"></h4>
+          <script>
+               
+               var numberOfMonths=0;
+               var numberOfDays=0;
+               var numberOfYears=0;
+               const daysInMonthLeapYear = [0,31,29,31,30,31,30,31,31,30,31,30,31];
+               const daysInMonth = [0,31,28,31,30,31,30,31,31,30,31,30,31];
+               
+               var startDate = new Date("Oct 24, 1997 20:49:00");
+               var startDate1 = startDate.getTime();
+               
+               var startDaysCount=startDate.getDate();
+               var startMonth = startDate.getMonth();
+               var startYear = startDate.getFullYear();
+               var tempYear = startYear;
+
+
+               var endDate = new Date();
+               var endDate1 = endDate.getTime();
+               var distance = endDate1 - startDate1;
+               var endYear = endDate.getFullYear();
+               var endMonth = endDate.getMonth();
+               var endDaysCount=endDate.getDate();
+
+               for(let i=startMonth;i<13;i++){
+                    //stop the loop if the loop values matches the current year and month
+                    if((tempYear == endYear) && (i == endMonth)){
+                        break;
+                    }
+                    //start the array again when the year starts
+                    if(i==12){
+                        i=0;
+                        tempYear++;
+                    }
+                    numberOfMonths++;
+               }
+               if(endDaysCount > startDaysCount){
+                numberOfDays = endDaysCount-startDaysCount;
+                //numberOfMonths++;
+               }
+               else{
+                    //numberOfDays = endDaysCount+()
+                    if ((0 == tempYear % 4) && (0 != tempYear % 100) || (0 == tempYear % 400)) {
+                        numberOfDays = endDaysCount+(daysInMonthLeapYear[startMonth]-startDaysCount);
+                    }
+                    else{
+                        numberOfDays = endDaysCount+(daysInMonth[startMonth]-startDaysCount);
+                    }
+               } 
+               numberOfYears = numberOfMonths/12;
+               numberOfYears = Math.floor(numberOfYears);
+               numberOfMonths = numberOfMonths%12;
+               var timesrun=0;
+               /*var endDate1 = new Date().getTime();
+                    var distance = endDate1 - startDate1;
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById("demo").innerHTML = numberOfYears + "y " + numberOfMonths + "m " + numberOfDays + "d " + hours + "h "+ minutes + "m " + seconds + "s ";              
+*/
+               var y = setInterval(function() {
+                    if(timesrun === 15){
+                         clearInterval();
+                    }
+                    //console.log("first interval started");
+                    var endDate1 = new Date().getTime();
+                    var distance = endDate1 - startDate1;
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById("demo").innerHTML = numberOfYears + "y " + numberOfMonths + "m " + numberOfDays + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+               },1000);
+
+///////////////////////////////////////////////////////////////////////////////
+
+               var x = setInterval(function() {
+                    //console.log("second interval started");
+               var endDate = new Date();
+               var endDate1 = endDate.getTime();
+               var distance = endDate1 - startDate1;
+               var endYear = endDate.getFullYear();
+               var endMonth = endDate.getMonth();
+               var endDaysCount=endDate.getDate();
+
+               for(let i=startMonth;i<13;i++){
+                    //stop the loop if the loop values matches the current year and month
+                    if((tempYear == endYear) && (i == endMonth)){
+                        break;
+                    }
+                    //start the array again when the year starts
+                    if(i==12){
+                        i=0;
+                        tempYear++;
+                    }
+                    numberOfMonths++;
+               }
+               if(endDaysCount > startDaysCount){
+                numberOfDays = endDaysCount-startDaysCount;
+                //numberOfMonths++;
+               }
+               else{
+                    //numberOfDays = endDaysCount+()
+                    if ((0 == tempYear % 4) && (0 != tempYear % 100) || (0 == tempYear % 400)) {
+                        numberOfDays = endDaysCount+(daysInMonthLeapYear[startMonth]-startDaysCount);
+                    }
+                    else{
+                        numberOfDays = endDaysCount+(daysInMonth[startMonth]-startDaysCount);
+                    }
+               } 
+               numberOfYears = numberOfMonths/12;
+               numberOfYears = Math.floor(numberOfYears);
+               numberOfMonths = numberOfMonths%12;
+               //var years = Math.floor(distance / (1000 * 60 * 60 * 24 * 365));
+               //var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
+               //var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+               //var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+               //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+              // document.getElementById("demo").innerHTML = numberOfYears + "y " + numberOfMonths + "m " + numberOfDays + "d " + hours + "h "
+               //+ minutes + "m " + seconds + "s ";
+               //////////////////////////////////////////
+               y = setInterval(function() {
+                    //console.log("third interval started");
+                    var endDate1 = new Date().getTime();
+                    var distance = endDate1 - startDate1;
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    document.getElementById("demo").innerHTML = numberOfYears + "y " + numberOfMonths + "m " + numberOfDays + "d " + hours + "h "+ minutes + "m " + seconds + "s ";
+               },2000);
+               }, 15000);
+               
+    const root = document.getElementById('root')
+    const fireworks = new Fireworks(root)
+    fireworks.start()
+          </script>
+
+
+
+
+
+
+
+     </body>
+</html>
